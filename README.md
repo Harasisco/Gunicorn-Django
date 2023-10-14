@@ -1,7 +1,5 @@
 # WebServer_using_Postgresql
 
-![image](https://github.com/Harasisco/Dockerize_Python_djangoApp/assets/87074807/b15a2d24-d23a-4f7f-bd83-76cb69bfbb72 )
-
 <p>This repository contains a Dockerized setup for running a Django web application using Gunicorn with a Postgresql database and an Nginx reverse proxy. This setup allows you to easily manage and deploy your Django application in a containerized environment.</p>
 
 ## Table of Contents

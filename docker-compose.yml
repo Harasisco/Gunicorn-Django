@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./django_gunicorn
+    container_name: django_server
+    hostname: Django_server
+    command: sh -c "cd /code/nginx_guni && gunicorn ngnix_guni.wsgi:application --bind 0.0.0.0:8000"
+    expose:
+      - 8000
+    volumes:
+      - ./django_gunicorn/:/code/
+    env_file:
+      - "./django_gunicorn/.env"
+    depends_on:
+      - db
+    networks:
+      backend-network:
+        ipv4_address: 10.0.0.10
+        
+        
+  nginx:
+    image: nginx:latest
+    container_name: nginx_REVproxy
+    hostname: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    depends_on:
+      - web
+    networks:
+      backend-network:
+        ipv4_address: 10.0.0.5
+  
+  
+  db:
+    image: postgres
+    container_name: postgresql
+    hostname: PostgreSQL
+    volumes:
+      - ./postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=root 
+      - POSTGRES_PASSWORD=harasisco  
+      - POSTGRES_DB=my_database 
+      - PGDATA=/tmp
+    networks:
+      backend-network:
+        ipv4_address: 10.0.0.15
+        
+        
+        
+networks:
+  backend-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.0/24

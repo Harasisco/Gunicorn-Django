@@ -91,11 +91,11 @@ rtt min/avg/max/mdev = 0.063/0.109/0.261/0.072 ms
     docker exec -it <container ID>  /bin/bash
     ```
   - Secondery check the PostgreSQL data base info:
-    ```shell
+   ```shell
    docker exec -it postgresql psql -U root -d my_database
    
    \dt;
-    ```
+   ```
    - You will see that No relations shown.
      
    - In a new tab execute :

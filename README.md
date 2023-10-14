@@ -22,7 +22,7 @@ Make sure you have the following prerequisites installed on your system:
 1. Clone this repository to your local machine:
 
 ```shell
-   git clone https://github.com/Harasisco/WebServer_using_Postgresql.git
+   git clone https://github.com/Harasisco/Gunicorn-Django.git
    cd Dockarizing-Django-nginx-PostgreSQL
 ```
 

@@ -93,7 +93,8 @@ rtt min/avg/max/mdev = 0.063/0.109/0.261/0.072 ms
   - Secondery check the PostgreSQL data base info:
    ```shell
    docker exec -it postgresql psql -U root -d my_database
-   
+   ```
+   ```shell
    \dt;
    ```
    - You will see that No relations shown.
